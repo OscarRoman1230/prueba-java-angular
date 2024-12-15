@@ -1,0 +1,49 @@
+<section class="container">
+  <div class="card px-4 py-4">
+    <form [formGroup]="searchClientForm" (ngSubmit)="run()" class="container">
+      <div class="form-group">
+        <label for="documentType">Tipo de Documento</label>
+        <select
+          id="documentType"
+          formControlName="documentType"
+          class="form-control"
+          [(ngModel)]="client.typeDocument"
+        >
+          <option *ngFor="let item of typesDocuments" [value]="item.key" [disabled]="item.key === ''" selected>{{ item.value }}</option>
+        </select>
+        <div *ngIf="searchClientForm.controls['documentType'].invalid && searchClientForm.controls['documentType'].touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="documentNumber">Número de Documento</label>
+        <input
+          id="documentNumber"
+          type="text"
+          formControlName="documentNumber"
+          class="form-control"
+          (input)="formatDocumentNumber($event)"
+          placeholder="123.456.789"
+          [(ngModel)]="client.numberDocument"
+        />
+        <div *ngIf="searchClientForm.controls['documentNumber'].hasError('required') && searchClientForm.controls['documentNumber'].touched" class="text-danger">
+          Este campo es obligatorio.
+        </div>
+        <div *ngIf="searchClientForm.controls['documentNumber'].hasError('minlength') && searchClientForm.controls['documentNumber'].touched" class="text-danger">
+          Mínimo 8 caracteres.
+        </div>
+        <div *ngIf="searchClientForm.controls['documentNumber'].hasError('maxlength') && searchClientForm.controls['documentNumber'].touched" class="text-danger">
+          Máximo 11 caracteres.
+        </div>
+        <div *ngIf="searchClientForm.controls['documentNumber'].hasError('pattern') && searchClientForm.controls['documentNumber'].touched" class="text-danger">
+          Solo se permiten números.
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary my-2" [disabled]="searchClientForm.invalid">
+        Buscar
+      </button>
+    </form>
+  </div>
+</section>

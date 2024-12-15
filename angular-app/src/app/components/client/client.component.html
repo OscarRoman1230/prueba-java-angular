@@ -1,0 +1,42 @@
+<section class="container">
+  <div class="card px-4 py-4">
+    <div class="card-title">Información básica</div>
+    <div class="card-body">
+      <div class="my-2">
+        <label for="lastName">
+          Apellidos
+          <input class="form-control" type="text" id="lastName" disabled [value]="client.firstLastName + ' ' + client.secondLastName">
+        </label>
+      </div>
+      <div class="my-2">
+        <label for="name">
+          Nombres
+          <input class="form-control" type="text" id="name" disabled [value]="client.firstName + ' ' + client.secondName">
+        </label>
+      </div>
+      <div class="my-2">
+        <label for="phone">
+          Teléfono
+          <input class="form-control" type="text" id="phone" disabled [value]="client.phone">
+        </label>
+      </div>
+      <div class="my-2">
+        <label for="address">
+          Dirección
+          <input class="form-control" type="text" id="address" disabled [value]="client.address">
+        </label>
+      </div>
+      <div class="my-2">
+        <label for="city">
+          Ciudad
+          <input class="form-control" type="text" id="city" disabled [value]="client.city">
+        </label>
+      </div>
+      <div class="my-2">
+        <button (click)="returnHome()" class="btn btn-primary">
+          Volver
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
