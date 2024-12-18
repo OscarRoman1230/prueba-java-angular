@@ -19,9 +19,7 @@ export class SearchClientComponent {
     {key: "C", value: "Cédula de Ciudadania"},
     {key: "P", value: "Pasaporte"},
   ]
-  rules = {
-    notEmpty: this.client.numberDocument !== "" && this.client.typeDocument !== ""
-  }
+
   searchClientForm: FormGroup
   constructor(private fb: FormBuilder, private router: Router) {
     this.searchClientForm = this.fb.group({
